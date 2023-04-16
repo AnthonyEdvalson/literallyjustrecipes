@@ -1,16 +1,13 @@
 {
   "files": {
-    "main.css": "/literallyjustrecipes/static/css/main.073c9b0a.css",
-    "main.js": "/literallyjustrecipes/static/js/main.66ff30ee.js",
-    "static/js/787.09636708.chunk.js": "/literallyjustrecipes/static/js/787.09636708.chunk.js",
-    "static/media/logo.svg": "/literallyjustrecipes/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/literallyjustrecipes/static/css/main.727b93ac.css",
+    "main.js": "/literallyjustrecipes/static/js/main.16e2ae9b.js",
     "index.html": "/literallyjustrecipes/index.html",
-    "main.073c9b0a.css.map": "/literallyjustrecipes/static/css/main.073c9b0a.css.map",
-    "main.66ff30ee.js.map": "/literallyjustrecipes/static/js/main.66ff30ee.js.map",
-    "787.09636708.chunk.js.map": "/literallyjustrecipes/static/js/787.09636708.chunk.js.map"
+    "main.727b93ac.css.map": "/literallyjustrecipes/static/css/main.727b93ac.css.map",
+    "main.16e2ae9b.js.map": "/literallyjustrecipes/static/js/main.16e2ae9b.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.66ff30ee.js"
+    "static/css/main.727b93ac.css",
+    "static/js/main.16e2ae9b.js"
   ]
 }
