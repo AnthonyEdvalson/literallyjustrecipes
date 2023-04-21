@@ -52,7 +52,7 @@ def stream_chat(messages: List[str], temperature: float):
         model="gpt-3.5-turbo",
         messages=msgs,
         temperature=temperature,
-        max_tokens=1024,
+        max_tokens=1536,
         stream=True,
         stop=["INGREDIENTS:", "Ingredients:"]
     )
