@@ -53,6 +53,7 @@ RECIPE_PROMPT = """Create a recipe for {}. Include:
 DO_MERGE = Section("INSTRUCTIONS", """Apply those changes to the content. 
 Combine as many details as possible from your notes with original content. 
 Do not remove any information in the content.
+Make additional modifications to the text to make sure everything flows neatly and sounds professional.
 Output a new version of the content, and nothing else. DO NOT explain your edits or list any changes made.""")
 
 DO_EXPAND = Section("INSTRUCTIONS", """Add new details to the content including:
@@ -89,7 +90,7 @@ def revise(attrs: dict[str, str], sections: list[Section], content_str: str, log
 def elaborate(attrs: dict[str, str], sections: list[Section], content_str: str, log: list[tuple[str, str]]) -> str:
     content = Section("CONTENT", content_str)
 
-    instruction = Section("INSTRUCTIONS", "List up to 5 things that stand out as being vague or unanswered.")
+    instruction = Section("INSTRUCTIONS", "List up to 3 things that stand out as being vague or unanswered.")
     question_prompt = Prompt(*sections, content, instruction).format(attrs)
     problems = Section("PROBLEMS", ask(question_prompt, 0.3, log))
 
@@ -131,7 +132,7 @@ def generate_style(attrs: dict[str, str], log: list[tuple[str, str]]):
     style = list_response(style, r"^(style|content|response)$", "{}. {}")
     assert len(style) == 6
     style.append("7. Recurring Motif: {food}".format(**attrs))
-    style.append("8. Topics: Avoid topics like slavery, gender, race, and graphic violence.")
+    style.append("8. Topics: DO NOT cover serious topics like slavery, gender, race, war, sex, and graphic violence.")
     style.append("9. Rating: PG-13")
     style.append("10. Protagonist Name: Amelia Iverson")
     style.append("11. Perspective: First Person")
@@ -150,7 +151,7 @@ def generate_chapters(attrs: dict[str, str], style: Section, log: list[tuple[str
     chapters = ask(to_chapters_prompt, 0.6, log)
 
     chapters = elaborate(attrs, [style], chapters, log)
-    chapters = revise(attrs, [style], chapters, log)
+    #chapters = revise(attrs, [style], chapters, log)
 
     return list_response(chapters, r"^(content( to edit)?|chapters)$", "Chapter {}: {}")
 
@@ -169,7 +170,7 @@ def generate_chapter(attrs: dict[str, str], style: Section, outline: Section, ch
     content = ask(write_prompt, 0.5, log)
 
     content = elaborate(attrs, [style, outline, chapter_outline], content, log)
-    content = expand(attrs, [style, outline, chapter_outline], content, log)
+    #content = expand(attrs, [style, outline, chapter_outline], content, log)
     #content = revise(attrs, [style, outline, chapter_outline], content, log)
 
     return content
